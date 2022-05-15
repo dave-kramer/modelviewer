@@ -18,6 +18,10 @@
 ## About
 Allows users to load a GLB/GLTF model, add hotspots to it & create a snippet so they can copy the code straight to their website.
 
+<p align="center">
+[Use it here](https://dave-kramer.github.io/modelviewer/)
+</p>
+
 ## Features
 | Function | Information | 
 | ------------- | ------------- |
@@ -45,4 +49,4 @@ coming
 Consult google's model-viewer [respository](https://github.com/google/model-viewer) and their [Apache License 2.0](https://github.com/google/model-viewer/blob/master/LICENSE)
 
 ## Previews
-coming
+![editor1](https://github.com/dave-kramer/modelviewer/blob/main/previews/preview1.png = 1239x605)
