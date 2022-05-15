@@ -25,7 +25,7 @@ coming
 coming
 
 ## License
-[MIT License](https://github.com/dave-kramer/vignette/blob/main/README.md)
+Consult google's model-viewer [respository](https://github.com/google/model-viewer) and their [Apache License 2.0](https://github.com/google/model-viewer/blob/master/LICENSE)
 
 ## Previews
 coming
