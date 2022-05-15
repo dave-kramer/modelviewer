@@ -40,10 +40,23 @@ Allows users to load a GLB/GLTF model, add hotspots to it & create a snippet so 
 | Camera view | Sets camera orbit to user given degrees. |
 | Shadows | Sets shadow intensity & softness. |
 | Interaction | Sets interaction prompt & style upon loading model. |
-| Snippet | Coming***** |
+| Create Snippet | Allows user to copy paste model including hotspots to their website. |
 
 ## Usage
-coming
+### Using the tool
+1. Go to the [GLB/GLTF Model Viewer & Editor](https://dave-kramer.github.io/modelviewer/).
+2. Drag & drop or browse for your GLB/GLTF Model.
+3. Add hotspots, edit them & play around with the functions till you have your desired model.
+4. Click on Create Snippet.
+
+### Placing it on your website
+5. Place the scripts inside your <head> tag.
+6. Place the model viewer inside your <body> tag.
+7. Place the css inside your stylesheet.
+8. Set the src="" inside the <model-viewer> tag to the folder that the model is in.
+9. Make sure to give the <model-viewer> or the div its in a height & width.
+
+That's it, you can now view the model.
 
 ## License
 Consult google's model-viewer [respository](https://github.com/google/model-viewer) and their [Apache License 2.0](https://github.com/google/model-viewer/blob/master/LICENSE)
