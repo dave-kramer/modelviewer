@@ -49,4 +49,4 @@ coming
 Consult google's model-viewer [respository](https://github.com/google/model-viewer) and their [Apache License 2.0](https://github.com/google/model-viewer/blob/master/LICENSE)
 
 ## Previews
-<img src="https://github.com/dave-kramer/modelviewer/blob/main/previews/preview1.png" width="1239" height="605">
+<img src="https://github.com/dave-kramer/modelviewer/blob/main/previews/preview1.png" width="885" height="432">
