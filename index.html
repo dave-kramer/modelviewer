@@ -76,8 +76,8 @@
     <div id="container" class="container">
         <div id="displayblocks" class="main" style="display: none;">
 
-            <model-viewer ondblclick="hotspotAdd()" onclick="selection()" id="modelblock" src="" ar
-                camera-controls background-color=" #254441" shadow-intensity="0" alt="A 3D model of a test cube"
+            <model-viewer ondblclick="hotspotAdd()" onclick="selection()" id="modelblock" src="" ar camera-controls
+                background-color=" #254441" shadow-intensity="0" alt="A 3D model of a test cube"
                 min-camera-orbit="Infinity 0deg auto" max-camera-orbit="Infinity 180deg auto" min-field-of-view="0"
                 max-field-of-view="180" interaction-prompt="none" bounds="tight" default-progress-bar>
                 <button slot="hotspot-dot+X+Y-Z" class="dot show" data-position="1 1 -1" data-normal="0 1 0"></button>
@@ -184,8 +184,7 @@
                                 <span class="close">&times;</span>
                                 <br>
                                 <h2 class="center">Scripts</h2>
-                                <div><textarea class="modaltextarea"
-                                        id="snippetscript">
+                                <div><textarea class="modaltextarea" id="snippetscript">
 <!-- Loads <model-viewer> for modern browsers: -->
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
 
@@ -207,12 +206,14 @@
 <!--<script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>-->
 <!-- OPTIONAL: Include prismatic.js for Magic Leap support -->
 <!--<script src="https://unpkg.com/@magicleap/prismatic@0.18.2/prismatic.min.js"></script>-->
-                                    </textarea><p class="righttext"><br>These scripts go into your head tag.</p>
+                                    </textarea>
+                                    <p class="righttext"><br>These scripts go into your head tag.</p>
                                 </div>
                                 <br>
                                 <h2 class="center">Body</h2>
                                 <div><textarea class="modaltextarea" id="snippetmodel">
-                                    </textarea><p class="righttext"><br>This is the modelviewer including all your hotspots.<br>
+                                    </textarea>
+                                    <p class="righttext"><br>This is the modelviewer including all your hotspots.<br>
                                         *NOTE: you'll have to put the folder directory inside the model-viewer src tag.
                                     </p>
                                 </div>
@@ -251,7 +252,8 @@
   text-align: left;
   word-wrap: break-word;
 }
-                                    </textarea><p class="righttext"><br>This is the css for the hotspots and annotations.<br>
+                                    </textarea>
+                                    <p class="righttext"><br>This is the css for the hotspots and annotations.<br>
                                         *NOTE: annotations will always be visible.
                                     </p>
                                 </div>
@@ -312,3 +314,5 @@
     </script>
 
 </body>
+
+</html>
