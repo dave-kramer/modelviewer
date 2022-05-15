@@ -38,6 +38,8 @@
     <script type="text/javascript" src="js/setShadow.js"></script>
     <script type="text/javascript" src="js/setZoom.js"></script>
     <script type="text/javascript" src="js/interactionprompt.js"></script>
+    <script type="text/javascript" src="js/createSnippet.js"></script>
+    <script type="text/javascript" src="js/modal.js"></script>
 
     <!-- Loads javascript icons for sidepanel -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -74,7 +76,7 @@
     <div id="container" class="container">
         <div id="displayblocks" class="main" style="display: none;">
 
-            <model-viewer ondblclick="hotspotAdd()" onclick="selection()" id="modelblock" src="" class="" ar
+            <model-viewer ondblclick="hotspotAdd()" onclick="selection()" id="modelblock" src="" ar
                 camera-controls background-color=" #254441" shadow-intensity="0" alt="A 3D model of a test cube"
                 min-camera-orbit="Infinity 0deg auto" max-camera-orbit="Infinity 180deg auto" min-field-of-view="0"
                 max-field-of-view="180" interaction-prompt="none" bounds="tight" default-progress-bar>
@@ -170,7 +172,94 @@
                         <option value="basic">Basic</option>
                         <option value="wiggle">Wiggle</option>
                     </select>
+                    <div>
+                        <br>
+                        <button id="myBtn" class="snippetBtn">Create Snippet</button>
 
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <br>
+                                <h2 class="center">Scripts</h2>
+                                <div><textarea class="modaltextarea"
+                                        id="snippetscript">
+<!-- Loads <model-viewer> for modern browsers: -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+
+<!-- Loads <model-viewer> for old browsers like IE11: -->
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+<!-- The following libraries and polyfills are recommended to maximize browser support -->
+<!-- NOTE: you must adjust the paths as appropriate for your project -->
+<!-- REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+<!-- OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+<!-- OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+<script src="https://unpkg.com/resize-observer-polyfill@1.5.1/dist/ResizeObserver.js"></script>
+
+<!-- OPTIONAL: Fullscreen polyfill is required for experimental AR features in Canary -->
+<!--<script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>-->
+<!-- OPTIONAL: Include prismatic.js for Magic Leap support -->
+<!--<script src="https://unpkg.com/@magicleap/prismatic@0.18.2/prismatic.min.js"></script>-->
+                                    </textarea><p class="righttext"><br>These scripts go into your head tag.</p>
+                                </div>
+                                <br>
+                                <h2 class="center">Body</h2>
+                                <div><textarea class="modaltextarea" id="snippetmodel">
+                                    </textarea><p class="righttext"><br>This is the modelviewer including all your hotspots.<br>
+                                        *NOTE: you'll have to put the folder directory inside the model-viewer src tag.
+                                    </p>
+                                </div>
+                                <br>
+                                <h2 class="center">CSS</h2>
+                                <div><textarea class="modaltextarea" id="snippetcss">
+.hotspot {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    font-size: 10px;
+    background: #fff;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+    transition: opacity 0.3s;
+    padding: 0px;
+}
+
+.annotation {
+  width: 125px;
+  background-color: white;
+  color: black;
+  position: absolute;
+  transform: translate(10px, 10px);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  font-family: Futura, Helvetica Neue, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  display: block;
+  padding: 10px;
+  text-align: left;
+  word-wrap: break-word;
+}
+                                    </textarea><p class="righttext"><br>This is the css for the hotspots and annotations.<br>
+                                        *NOTE: annotations will always be visible.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
@@ -218,6 +307,7 @@
             shadowIntensity();
             shadowSoftness();
             autorotateDelay();
+            modal();
         });
     </script>
 
