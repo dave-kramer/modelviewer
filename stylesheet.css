@@ -475,7 +475,7 @@ select {
   top: 0;
   left: 1;
   z-index: -1;
-  background-color: #666666;
+  background-color: #55acee;
 }
 
 .globe .background_circle {
@@ -490,7 +490,7 @@ select {
   background-color: #2bfdb7;
 }
 
-.twitter .background_circle {
+/* .twitter .background_circle {
   display: none;
   width: 52px;
   height: 54px;
@@ -512,11 +512,11 @@ select {
   left: 1;
   z-index: -1;
   background-color: #cd486b;
-}
+} */
 
 .github:hover,
 .github:active {
-  background-color: #666666;
+  background-color: #55acee;
 }
 
 .globe:hover,
@@ -524,7 +524,7 @@ select {
   background-color: #2bfdb7;
 }
 
-
+/* 
 .twitter:hover,
 .twitter:active {
   background-color: #55acee;
@@ -533,7 +533,7 @@ select {
 .instagram:hover,
 .instagram:active {
   background-color: #cd486b;
-}
+} */
 
 .drop {
   margin: auto;
