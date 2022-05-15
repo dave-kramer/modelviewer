@@ -16,7 +16,7 @@
 - [Previews](#previews)
 
 ## About
-Allows users to load a GLB/GLTF model, add hotspots to it & creates a snippet so they can copy the code straight to their website.
+Allows users to load a GLB/GLTF model, add hotspots to it & create a snippet so they can copy the code straight to their website.
 
 ## Features
 | Function | Information | 

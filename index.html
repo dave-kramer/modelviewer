@@ -88,7 +88,7 @@
 
             </model-viewer>
         </div>
-        <!-- Wrapper is for our side panel which includes a button to show the editor, data page & load landscape mode-->
+
         <div id="side" class="side" style="display: none;">
             <div class="wrapper side-panel-open">
 
@@ -130,7 +130,7 @@
                     <p>Framing & Scaling</p>
                     <div>Roll: <input id="roll" value="0" size="3" class="number">
                         Pitch: <input id="pitch" value="0" size="3" class="number">
-                        Yaw: <input id="yaw" value="0" size="3" class="number"> °</div>
+                        Yaw: <input id="yaw" value="0" size="3" class="number"></div>
                     <div>
                         X: <input id="x" value="1" size="3" class="number">,
                         Y: <input id="y" value="1" size="3" class="number">,
@@ -142,10 +142,10 @@
                         </span>
                     </button>
                     <br>
-                    <p>Camera ° view</p>
+                    <p>Camera view</p>
                     <div>
-                        X: <input id="xdegrees" value="0" size="3" class="number"> °
-                        Y: <input id="ydegrees" value="0" size="3" class="number"> °
+                        X: <input id="xdegrees" value="0" size="3" class="number">
+                        Y: <input id="ydegrees" value="0" size="3" class="number">
                     </div>
                     <button class="panel-button" onclick="setCamera()">
                         <ion-icon size="large" name="refresh-circle"></ion-icon><span class="panel-button-text2">Set
@@ -175,7 +175,6 @@
 
             </div>
 
-            <!-- Opens the sidepanel -->
             <script>
                 document.querySelector(".side-panel-toggle").addEventListener("click", () => {
                     document.querySelector(".wrapper").classList.toggle("side-panel-open");
