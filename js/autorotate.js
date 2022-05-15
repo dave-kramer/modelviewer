@@ -10,8 +10,18 @@ function autorotate() {
     }
 }
 
+
 // Sets auto-rotate delay
 function autorotateDelay() {
-    let autorotatedelay = document.getElementById("autorotatedelay").value * 1000; // sets ms to seconds
-    document.getElementById("modelblock").setAttribute("auto-rotate-delay", autorotatedelay);
+    var autorotatedelay = document.getElementById("autorotatedelay");
+    autorotatedelay.addEventListener('change', function () {
+
+        if (autorotatedelay.value == '0') {
+            document.getElementById("modelblock").removeAttribute("auto-rotate-delay");
+        }
+
+        else {
+            document.getElementById("modelblock").setAttribute("auto-rotate-delay", autorotatedelay.value * 1000);
+        }
+    }, false);
 }

@@ -16,10 +16,27 @@
 - [Previews](#previews)
 
 ## About
-coming
+Allows users to load a GLB/GLTF model, add hotspots to it & creates a snippet so they can copy the code straight to their website.
 
 ## Features
-coming
+| Function | Information | 
+| ------------- | ------------- |
+| Add hotspot | Adds hotspot to loaded model. |
+| Edit hotspot | Allows user to edit the hotspot size, color & allows for annotations. |
+| Delete hotspot | Deletes hotspot from model. | 
+| Auto-rotate | Enables auto-rotate. |
+| Auto-rotate delay | Sets the delay before auto-rotation begins. |
+| Hide hotspots | Hides all hotspots. | 
+| Hide dimensions | Hides all dimensions. |
+| Neutral Lighting | Enables neutral lighting. |
+| Panning | Allows tapping on the model to move. |
+| Camera Control | Enables camera controls. |
+| Disable zoom | Disables zoom on the model. |
+| Framing & Scaling | Changes the orientation and scale attributes which allow the model to be transformed. |
+| Camera view | Sets camera orbit to user given degrees. |
+| Shadows | Sets shadow intensity & softness. |
+| Interaction | Sets interaction prompt & style upon loading model. |
+| Snippet | Coming***** |
 
 ## Usage
 coming

@@ -16,12 +16,12 @@
     <link rel="icon" type="image/png" href="assets/box.png" sizes="32x32">
 
     <!-- for IE -->
-    <link rel="icon" type="image/x-icon" href="assets/box.ico" >
-    <link rel="shortcut icon" type="image/x-icon" href="assets/box.ico"/>
+    <link rel="icon" type="image/x-icon" href="assets/box.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/box.ico" />
 
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Loads javascript functions -->
     <script type="text/javascript" src="js/hotspotHider.js"></script>
@@ -77,8 +77,7 @@
             <model-viewer ondblclick="hotspotAdd()" onclick="selection()" id="modelblock" src="" class="" ar
                 camera-controls background-color=" #254441" shadow-intensity="0" alt="A 3D model of a test cube"
                 min-camera-orbit="Infinity 0deg auto" max-camera-orbit="Infinity 180deg auto" min-field-of-view="0"
-                max-field-of-view="180" auto-rotate-delay="1" interaction-prompt="none" bounds="tight"
-                default-progress-bar>
+                max-field-of-view="180" interaction-prompt="none" bounds="tight" default-progress-bar>
                 <button slot="hotspot-dot+X+Y-Z" class="dot show" data-position="1 1 -1" data-normal="0 1 0"></button>
                 <button slot="hotspot-dim+Y-Z" class="dim show" data-position="0 -1 -1" data-normal="0 1 0"></button>
                 <button slot="hotspot-dot-X+Y-Z" class="dot show" data-position="-1 1 -1" data-normal="0 1 0"></button>
@@ -102,7 +101,11 @@
                     <br>
                     <div><label for="autorotate">Auto-rotate: </label>
                         <input id="autorotate" type="checkbox" onclick="autorotate()">
+                        <div>
+                            Auto rotate delay: <input id="autorotatedelay" value="0" type="range" min="0" max="10">
+                        </div>
                     </div>
+                    <br>
                     <div>
                         <label for="hider">Hide hotspots: </label>
                         <input id="hider" type="checkbox" onclick="hotspotHider()">
@@ -125,9 +128,9 @@
                     </div>
                     <br>
                     <p>Framing & Scaling</p>
-                    <div>Roll: <input id="roll" value="0" size="3" class="number"> °</div>
-                    <div>Pitch: <input id="pitch" value="0" size="3" class="number"> °</div>
-                    <div>Yaw: <input id="yaw" value="0" size="3" class="number"> °</div>
+                    <div>Roll: <input id="roll" value="0" size="3" class="number">
+                        Pitch: <input id="pitch" value="0" size="3" class="number">
+                        Yaw: <input id="yaw" value="0" size="3" class="number"> °</div>
                     <div>
                         X: <input id="x" value="1" size="3" class="number">,
                         Y: <input id="y" value="1" size="3" class="number">,
@@ -167,19 +170,6 @@
                         <option value="basic">Basic</option>
                         <option value="wiggle">Wiggle</option>
                     </select>
-                    <br>
-                    <div>
-                        Auto rotate delay: <input id="autorotatedelay" value="0" size="3" class="number">
-                    </div>
-                    <button class="panel-button" onclick="autorotateDelay()">
-                        <ion-icon size="large" name="refresh-circle"></ion-icon><span class="panel-button-text2">Set
-                        </span>
-                    </button>
-                    <br>
-                    <button onclick="hideAll()" class="panel-button">
-                        <ion-icon size="large" name="tablet-landscape"></ion-icon>
-                        <span class="panel-button-text">Landscape</span>
-                    </button>
 
                 </div>
 
@@ -204,7 +194,7 @@
                         aria-hidden="true"></i>
                     <div class="background_circle"></div>
                 </a>
-                <a href="https://github.com/dave-kramer" target="_blank" class="icon github"><i
+                <a href="https://github.com/dave-kramer/modelviewer" target="_blank" class="icon github"><i
                         class="fa fa-github fa-2x" aria-hidden="true"></i>
                     <div class="background_circle"></div>
                 </a>
@@ -238,6 +228,7 @@
             interactionStyle();
             shadowIntensity();
             shadowSoftness();
+            autorotateDelay();
         });
     </script>
 

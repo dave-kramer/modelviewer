@@ -72,11 +72,13 @@ function hotspotAdd(MouseEvent) {
     entry_slider.setAttribute("disabled", "disabled");
 
     const entry_color = document.createElement('INPUT')
+    entry_color.classList.add('colorpicker');
     entry_color.id = `${hotspot.id}-color`
     entry_color.setAttribute("type", "color");
     entry_color.setAttribute("value", "#39b8e2");
 
     const entry_textcolor = document.createElement('INPUT')
+    entry_textcolor.classList.add('colorpicker');
     entry_textcolor.id = `${hotspot.id}`
     entry_textcolor.setAttribute("type", "color");
     entry_textcolor.setAttribute("value", "black");
