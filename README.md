@@ -50,3 +50,4 @@ Consult google's model-viewer [respository](https://github.com/google/model-view
 
 ## Previews
 <img src="https://github.com/dave-kramer/modelviewer/blob/main/previews/preview1.png" width="885" height="432">
+<img src="https://github.com/dave-kramer/modelviewer/blob/main/previews/preview2.png" width="885" height="432">
