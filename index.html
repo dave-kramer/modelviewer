@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>GLB/GLTF Model Viewer & Editor</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- for FF, Chrome, Opera -->
+    <link rel="icon" type="image/png" href="assets/box.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/box.png" sizes="32x32">
+
+    <!-- for IE -->
+    <link rel="icon" type="image/x-icon" href="assets/box.ico" >
+    <link rel="shortcut icon" type="image/x-icon" href="assets/box.ico"/>
+
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Loads javascript functions -->
+    <script type="text/javascript" src="js/hotspotHider.js"></script>
+    <script type="text/javascript" src="js/selection.js"></script>
+    <script type="text/javascript" src="js/hotspotAdd.js"></script>
+    <script type="text/javascript" src="js/neutralLight.js"></script>
+    <script type="text/javascript" src="js/autorotate.js"></script>
+    <script type="text/javascript" src="js/panning.js"></script>
+    <script type="text/javascript" src="js/dimensions.js" defer></script>
+    <script type="text/javascript" src="js/dimensionHider.js"></script>
+    <script type="text/javascript" src="js/transform.js"></script>
+    <script type="text/javascript" src="js/setCamera.js"></script>
+    <script type="text/javascript" src="js/setCameraControls.js"></script>
+    <script type="text/javascript" src="js/setShadow.js"></script>
+    <script type="text/javascript" src="js/setZoom.js"></script>
+    <script type="text/javascript" src="js/interactionprompt.js"></script>
+
+    <!-- Loads javascript icons for sidepanel -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- 3d model viewer links -->
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+
+    <!-- Loads <model-viewer> for old browsers like IE11: -->
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+
+    <!-- REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+    <!-- OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+    <!-- OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.1/dist/ResizeObserver.js"></script>
+
+    <!-- OPTIONAL: Fullscreen polyfill is required for experimental AR features in Canary -->
+    <!--<script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>-->
+
+    <!-- OPTIONAL: Include prismatic.js for Magic Leap support -->
+    <!--<script src="https://unpkg.com/@magicleap/prismatic@0.18.2/prismatic.min.js"></script>-->
+
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div id="displayblocks" class="main" style="display: none;">
+
+            <model-viewer ondblclick="hotspotAdd()" onclick="selection()" id="modelblock" src="" class="" ar
+                camera-controls background-color=" #254441" shadow-intensity="0" alt="A 3D model of a test cube"
+                min-camera-orbit="Infinity 0deg auto" max-camera-orbit="Infinity 180deg auto" min-field-of-view="0"
+                max-field-of-view="180" auto-rotate-delay="1" interaction-prompt="none" bounds="tight"
+                default-progress-bar>
+                <button slot="hotspot-dot+X+Y-Z" class="dot show" data-position="1 1 -1" data-normal="0 1 0"></button>
+                <button slot="hotspot-dim+Y-Z" class="dim show" data-position="0 -1 -1" data-normal="0 1 0"></button>
+                <button slot="hotspot-dot-X+Y-Z" class="dot show" data-position="-1 1 -1" data-normal="0 1 0"></button>
+                <button slot="hotspot-dim-X-Z" class="dim" data-position="-1 0 -1" data-normal="-1 0 0"></button>
+                <button slot="hotspot-dot-X-Y-Z" class="dot" data-position="-1 -1 -1" data-normal="-1 0 0"></button>
+                <button slot="hotspot-dim-X-Y" class="dim" data-position="-1 -1 0" data-normal="-1 0 0"></button>
+                <button slot="hotspot-dot-X-Y+Z" class="dot" data-position="-1 -1 1" data-normal="-1 0 0"></button>
+
+            </model-viewer>
+        </div>
+        <!-- Wrapper is for our side panel which includes a button to show the editor, data page & load landscape mode-->
+        <div id="side" class="side" style="display: none;">
+            <div class="wrapper side-panel-open">
+
+                <button class="side-panel-toggle" type="button">
+                    <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+                    <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+                </button>
+
+                <div class="side-panel">
+                    <br>
+                    <div><label for="autorotate">Auto-rotate: </label>
+                        <input id="autorotate" type="checkbox" onclick="autorotate()">
+                    </div>
+                    <div>
+                        <label for="hider">Hide hotspots: </label>
+                        <input id="hider" type="checkbox" onclick="hotspotHider()">
+                    </div>
+                    <div><label for="hide-dimensions">Hide dimensions:</label>
+                        <input id="hide-dimensions" onclick="dimensionHider()" type="checkbox" style="margin-right: 5em"
+                            checked>
+                    </div>
+                    <div><label for="neutral">Neutral Lighting: </label>
+                        <input id="neutral" type="checkbox" onclick="neutralLight()">
+                    </div>
+                    <div><label for="panning">Panning: </label>
+                        <input id="panning" type="checkbox" onclick="panning()">
+                    </div>
+                    <div><label for="cameracontrols">Camera Control: </label>
+                        <input id="cameracontrols" type="checkbox" onclick="setCameraControls()" checked>
+                    </div>
+                    <div><label for="zoom">Disable zoom: </label>
+                        <input id="zoom" type="checkbox" onclick="setZoom()">
+                    </div>
+                    <br>
+                    <p>Framing & Scaling</p>
+                    <div>Roll: <input id="roll" value="0" size="3" class="number"> °</div>
+                    <div>Pitch: <input id="pitch" value="0" size="3" class="number"> °</div>
+                    <div>Yaw: <input id="yaw" value="0" size="3" class="number"> °</div>
+                    <div>
+                        X: <input id="x" value="1" size="3" class="number">,
+                        Y: <input id="y" value="1" size="3" class="number">,
+                        Z: <input id="z" value="1" size="3" class="number">
+                    </div>
+                    <button id="frame" class="panel-button">
+                        <ion-icon size="large" name="refresh-circle"></ion-icon><span class="panel-button-text2">Update
+                            Framing
+                        </span>
+                    </button>
+                    <br>
+                    <p>Camera ° view</p>
+                    <div>
+                        X: <input id="xdegrees" value="0" size="3" class="number"> °
+                        Y: <input id="ydegrees" value="0" size="3" class="number"> °
+                    </div>
+                    <button class="panel-button" onclick="setCamera()">
+                        <ion-icon size="large" name="refresh-circle"></ion-icon><span class="panel-button-text2">Set
+                        </span>
+                    </button>
+                    <br>
+                    <div>
+                        <p>Shadow intensity</p>
+                        <input id="shadowint" value="0" type="range" min="0" max="100">
+                        <input id="shadowsoft" value="0" type="range" min="0" max="1">
+                    </div>
+                    <p>Interaction</p>
+                    <select class="selectbox" name="interactionprompt" id="interactionprompt">
+                        <option value="prompt" disabled>Prompt</option>
+                        <option value="none">None</option>
+                        <option value="auto">Auto</option>
+                        <option value="when-focused">Focused</option>
+                    </select>
+                    <select class="selectbox" name="interactionstyle" id="interactionstyle">
+                        <option value="style" disabled>Style</option>
+                        <option value="none">None</option>
+                        <option value="basic">Basic</option>
+                        <option value="wiggle">Wiggle</option>
+                    </select>
+                    <br>
+                    <div>
+                        Auto rotate delay: <input id="autorotatedelay" value="0" size="3" class="number">
+                    </div>
+                    <button class="panel-button" onclick="autorotateDelay()">
+                        <ion-icon size="large" name="refresh-circle"></ion-icon><span class="panel-button-text2">Set
+                        </span>
+                    </button>
+                    <br>
+                    <button onclick="hideAll()" class="panel-button">
+                        <ion-icon size="large" name="tablet-landscape"></ion-icon>
+                        <span class="panel-button-text">Landscape</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Opens the sidepanel -->
+            <script>
+                document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+                    document.querySelector(".wrapper").classList.toggle("side-panel-open");
+                })
+            </script>
+        </div>
+        <div id="hotspotlist" class="list" style="display: none;">
+            <h2>Hotspots</h2>
+            <section class="entry-list">
+                <div id="entries" class="scroller"></div>
+            </section>
+        </div>
+        <div id="info" class="info" style="display: none;">
+            <div class="icon_group">
+                <a href="https://davekramer.nl" target="_blank" class="icon globe"><i class="fa fa-globe fa-2x"
+                        aria-hidden="true"></i>
+                    <div class="background_circle"></div>
+                </a>
+                <a href="https://github.com/dave-kramer" target="_blank" class="icon github"><i
+                        class="fa fa-github fa-2x" aria-hidden="true"></i>
+                    <div class="background_circle"></div>
+                </a>
+                <br>
+                <br>
+                <a href="https://twitter.com/davekramer" target="_blank" class="icon twitter"><i
+                        class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                    <div class="background_circle"></div>
+                </a>
+                <a href="https://www.instagram.com/davkramer" target="_blank" class="icon instagram"><i
+                        class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                    <div class="background_circle"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="drop" id="drag-area">
+        <div class="drag-area row">
+            <header>Drop GLB/GLTF Model</header>
+            <span>or just <button> Browse</button>
+                <input type="file" accept=".glb,.gltf" hidden></span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/fileupload.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            dimensionHider();
+            transform();
+            interactionPrompt();
+            interactionStyle();
+            shadowIntensity();
+            shadowSoftness();
+        });
+    </script>
+
+</body>
