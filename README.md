@@ -19,7 +19,7 @@
 Allows users to load a GLB/GLTF model, add hotspots to it & create a snippet so they can copy the code straight to their website.
 
 <p align="center">
-[Use it here](https://dave-kramer.github.io/modelviewer/)
+ <a href="https://dave-kramer.github.io/modelviewer/">Use it here</a>
 </p>
 
 ## Features
