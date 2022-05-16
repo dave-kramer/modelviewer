@@ -50,11 +50,11 @@ Allows users to load a GLB/GLTF model, add hotspots to it & create a snippet so 
 4. Click on Create Snippet.
 
 ### Placing it on your website
-5. Place the scripts inside your <head> tag.
-6. Place the model viewer inside your <body> tag.
+5. Place the scripts inside your head tag.
+6. Place the model viewer inside your body tag.
 7. Place the css inside your stylesheet.
-8. Set the src="" inside the <model-viewer> tag to the folder that the model is in.
-9. Make sure to give the <model-viewer> or the div its in a height & width.
+8. Set the src="" inside the model-viewer tag to the folder that the model is in.
+9. Make sure to give the model-viewer tag or the div its in a height & width.
 
 That's it, you can now view the model.
 
